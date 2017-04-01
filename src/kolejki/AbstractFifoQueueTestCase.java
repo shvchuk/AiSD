@@ -57,4 +57,23 @@ public abstract class AbstractFifoQueueTestCase extends TestCase {
         }
     }
 
+    public void testClear(){
+        _queue.enqueue(VALUE_A);
+        _queue.enqueue(VALUE_B);
+        _queue.enqueue(VALUE_C);
+
+        assertFalse(_queue.isEmpty());
+
+        _queue.clear();
+
+        assertEquals(0, _queue.size());
+        assertTrue(_queue.isEmpty());
+
+        try{
+            _queue.dequeue();
+            fail(); // zachowanie nieoczekiwane
+        } catch (EmptyQueueException e){
+            // zachowanie oczekiwane
+        }
+    }
 }
