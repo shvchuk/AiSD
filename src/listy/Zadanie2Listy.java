@@ -1,7 +1,5 @@
 package listy;
 
-import iteratory.Iterator;
-
 public class Zadanie2Listy {
 
     public static void main(String[] args) {
@@ -9,12 +7,12 @@ public class Zadanie2Listy {
         LinkedList lista1 = new LinkedList();
         LinkedList lista2 = new LinkedList();
 
-        lista1.add("A");
-        lista1.add("B");
-        lista1.add("C");
+        lista1.add();
+        lista1.add();
+        lista1.add();
 
-        lista2.add("D");
-        lista2.add("E");
+        lista2.add();
+        lista2.add();
 
         System.out.println(polaczListyNumerElementu(lista1, lista2, 1));
 
@@ -32,18 +30,18 @@ public class Zadanie2Listy {
             if(index == 0){
                 listaNowa = listaDwa;
                 for(int i = 0; i < listaJeden.size(); i++){
-                    listaNowa.add(listaJeden.get(i));
+                    listaNowa.add();
                 }
             } else {
                 for(int i = 0; i < index; i++){
-                    listaNowa.add(listaJeden.get(0));
+                    listaNowa.add();
                     staryIndexListyJeden++;
                 }
                 for(int i = 0; i < listaDwa.size(); i++){
-                    listaNowa.add(listaDwa.get(0));
+                    listaNowa.add();
                 }
                 for(int i = staryIndexListyJeden; i < listaJeden.size(); i++){
-                    listaNowa.add(listaJeden.get(i));
+                    listaNowa.add();
                 }
             }
 
@@ -57,7 +55,7 @@ public class Zadanie2Listy {
             if(listaJeden.get(0).equals(element)){
                 listaNowa = listaDwa;
                 for(int i = 0; i < listaJeden.size(); i++){
-                    listaNowa.add(listaJeden.get(i));
+                    listaNowa.add();
                 }
             } else {
             }
@@ -70,7 +68,7 @@ public class Zadanie2Listy {
             LinkedList listaNowa = listaJeden;
 
             for(int i = 0; i < listaDwa.size(); i++){
-                listaNowa.add(listaDwa.get(i));
+                listaNowa.add();
             }
             return listaNowa;
         }
