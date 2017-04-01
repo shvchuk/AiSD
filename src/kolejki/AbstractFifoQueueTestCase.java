@@ -29,6 +29,21 @@ public abstract class AbstractFifoQueueTestCase extends TestCase {
         }
     }
 
+    public void testEnqueueDequeue(){
+        _queue.enqueue(VALUE_B);
+        _queue.enqueue(VALUE_A);
+        _queue.enqueue(VALUE_C);
+
+        assertEquals(3, _queue.size());
+        assertFalse(_queue.isEmpty());
+
+        assertSame(VALUE_B, _queue.dequeue());
+        assertEquals(2, _queue.size());
+        assertFalse(_queue.isEmpty());
+
+
+
+    }
 
 
 }
