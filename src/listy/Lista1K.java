@@ -14,7 +14,7 @@ public class Lista1K implements List {
     }
 
     @Override
-    public void add() {
+    public void add(Object value) {
 
     }
 
