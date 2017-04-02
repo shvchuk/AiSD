@@ -26,6 +26,20 @@ public class CustomerServiceAgent implements Runnable {
 
     @Override
     public void run() {
+        System.out.println(this + " obecny");
 
+        while(true){
+            System.out.println(this + " oczekuje");
+            Call call = (Call) _calls.dequeue();
+            System.out.println(this + " obsługuje " + call);
+
+            if(call == GO_HOME){
+                break;
+            }
+
+            call.answer();
+        }
+
+        System.out.println(this + " zakończył pracę");
     }
 }
