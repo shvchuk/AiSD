@@ -12,13 +12,13 @@ public class Macierz {
 
         macierzDwuwymiarowa = new double[x][y];
 
-        generujMacierz();
-        najwiekszyElementMacierzy();
+        //generujMacierz();
+        //najwiekszyElementMacierzy();
     }
 
 
 
-    private void generujMacierz() {
+    public void generujMacierz() {
         int zakres = 50;
 
         Random generatorDouble = new Random();
@@ -31,6 +31,40 @@ public class Macierz {
         }
     }
 
-    private void najwiekszyElementMacierzy() {
+    public void najwiekszyElementMacierzy() {
+
+        double najwiekszyElement = macierzDwuwymiarowa[0][0];
+        int wiersz = 0;
+        int kolumna = 0;
+
+        for(int i = 0; i < x; i++){
+            for(int j = 0; j < y; j++){
+                if(najwiekszyElement < macierzDwuwymiarowa[i][j]) {
+                    najwiekszyElement = macierzDwuwymiarowa[i][j];
+                    kolumna = j+1;
+                    wiersz = i+1;
+                }
+            }
+        }
+
+        String wartoscMaksymalna = String.format("%s" + "%05.2f", "Wartość maksymalna elementu macierzy: ",
+                najwiekszyElement);
+        String indeksMaxEl = String.format(" w wierszu " + wiersz + ", kolumnie: " + kolumna);
+        System.out.println(wartoscMaksymalna+indeksMaxEl);
+    }
+
+    public void wyswietlMacierz(){
+        System.out.println("Macierz");
+        System.out.println("Liczba wierszy: " + x);
+        System.out.println("Liczba kolumn: " + y);
+        System.out.println("-----------------");
+
+        for(int i = 0; i < x; i++){
+            for(int j = 0; j < y; j++){
+                System.out.printf("%05.2f", macierzDwuwymiarowa[i][j]);
+                System.out.print("\t");
+            }
+            System.out.println();
+        }
     }
 }
