@@ -1,7 +1,6 @@
 package wersja.finalna.pliki;
 
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Random;
 
 public class Macierz {
@@ -88,5 +87,20 @@ public class Macierz {
         fileWriter.write("\n");
         fileWriter.write(najwiekszyElementMacierzy());
         fileWriter.close();
+        System.out.println("Zapisaliśmy macierz do pliku tekstowego.");
+    }
+
+    public void odczytMacierzPlikTekstowy() throws IOException {
+        System.out.println("------------");
+        System.out.println("Odczyt pliku start.");
+        BufferedReader reader = new BufferedReader(new FileReader("macierz2.txt"));
+        String line;
+
+        while((line = reader.readLine()) != null){
+            System.out.println(line);
+        }
+
+        System.out.println("Odczyt pliku koniec.");
+        System.out.println("------------");
     }
 }
