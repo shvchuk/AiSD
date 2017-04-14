@@ -12,9 +12,6 @@ public class Macierz {
         this.y = y;
 
         macierzDwuwymiarowa = new double[x][y];
-
-        //generujMacierz();
-        //najwiekszyElementMacierzy();
     }
 
 
@@ -102,5 +99,42 @@ public class Macierz {
 
         System.out.println("Odczyt pliku koniec.");
         System.out.println("------------");
+    }
+
+    public void zapiszMacierzPlikBinarny() throws IOException {
+        DataOutputStream dataOut = new DataOutputStream(new FileOutputStream("macierz-data"));
+
+        dataOut.writeInt(x);
+        dataOut.writeInt(y);
+
+        for(int i = 0; i < x; i++){
+            for(int j = 0; j < y; j++){
+                dataOut.writeDouble(macierzDwuwymiarowa[i][j]);
+            }
+        }
+        System.out.println("Zapisano macierz do pliku binarnego.");
+    }
+
+    public void odczytMacierzPlikBinarny() throws IOException {
+        System.out.println("-------------");
+        System.out.println("Odczyt macierzy z pliku binarnego START");
+        DataInputStream dataIn = new DataInputStream(new FileInputStream("macierz-data"));
+
+        int iloscWierszy = dataIn.readInt();
+        System.out.println("Liczba wierszy: " + iloscWierszy);
+
+        int liczbaKolumn = dataIn.readInt();
+        System.out.println("Liczka kolumn: " + liczbaKolumn);
+
+        double element;
+        for(int i = 0; i < x; i++){
+            for(int j = 0; j < y; j++){
+                element = dataIn.readDouble();
+                System.out.print(String.format("%05.2f", element));
+                System.out.print("\t");
+            }
+            System.out.print("\n");
+        }
+        System.out.println("Odczyt macierzy z pliku binarnego KONIEC");
     }
 }
