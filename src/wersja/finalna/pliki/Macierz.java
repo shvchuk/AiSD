@@ -1,5 +1,7 @@
 package wersja.finalna.pliki;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Random;
 
 public class Macierz {
@@ -31,7 +33,7 @@ public class Macierz {
         }
     }
 
-    public void najwiekszyElementMacierzy() {
+    public String najwiekszyElementMacierzy() {
 
         double najwiekszyElement = macierzDwuwymiarowa[0][0];
         int wiersz = 0;
@@ -50,7 +52,7 @@ public class Macierz {
         String wartoscMaksymalna = String.format("%s" + "%05.2f", "Wartość maksymalna elementu macierzy: ",
                 najwiekszyElement);
         String indeksMaxEl = String.format(" w wierszu " + wiersz + ", kolumnie: " + kolumna);
-        System.out.println(wartoscMaksymalna+indeksMaxEl);
+        return wartoscMaksymalna+indeksMaxEl;
     }
 
     public void wyswietlMacierz(){
@@ -66,5 +68,25 @@ public class Macierz {
             }
             System.out.println();
         }
+    }
+
+    public void zapiszMacierzPlikTekstowy() throws IOException {
+        FileWriter fileWriter = new FileWriter("macierz2.txt");
+
+        fileWriter.write("Macierz\n");
+        fileWriter.write("Liczba wierszy: " + x+"\n");
+        fileWriter.write("Liczba kolumn: " + y+"\n");
+        fileWriter.write("\n");
+
+        for(int i = 0; i < x; i++){
+            for(int j = 0; j < y; j++){
+                fileWriter.write(String.format("%05.2f", macierzDwuwymiarowa[i][j]));
+                fileWriter.write("\t");
+            }
+            fileWriter.write("\n");
+        }
+        fileWriter.write("\n");
+        fileWriter.write(najwiekszyElementMacierzy());
+        fileWriter.close();
     }
 }
