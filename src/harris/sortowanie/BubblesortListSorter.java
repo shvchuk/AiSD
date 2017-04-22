@@ -11,6 +11,8 @@ public class BubblesortListSorter implements ListSorter {
         _comparator = comparator;
     }
 
+
+
     @Override
     public List sort(List list) {
         assert list != null : "nie określono listy wejściowej";
